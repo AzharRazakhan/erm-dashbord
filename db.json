@@ -1,0 +1,18 @@
+{
+  "users": [
+    { "id": 1, "username": "owner", "password": "owner123", "role": "SUPER_ADMIN" },
+    { "id": 2, "username": "hr", "password": "hr123", "role": "HR_USER" }
+  ],
+  "employees": [
+    { "id": 1, "name": "Priya Sharma", "role": "Frontend Developer", "department": "Engineering", "joiningDate": "2023-09-01", "status": "Active" }
+  ],
+  "applications": [
+    { "id": 1, "name": "Amit Kumar", "appliedRole": "Backend Developer", "experience": 3, "status": "New", "resumeUrl": "/resumes/amit-kumar.pdf" }
+  ],
+  "departments": [
+    { "id": 1, "name": "Engineering" }, { "id": 2, "name": "HR" }
+  ],
+  "documents": [
+    { "id":1, "employeeId":1, "fileName":"resume-priya.pdf", "category":"Resume", "uploadedAt":"2024-11-01", "url":"/docs/resume-priya.pdf" }
+  ]
+}
