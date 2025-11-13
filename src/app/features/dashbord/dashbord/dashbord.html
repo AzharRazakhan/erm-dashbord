@@ -1,6 +1,39 @@
- <div class="p-6 grid grid-cols-2 gap-4">
-    <mat-card>Total Employees: 12</mat-card>
-    <mat-card>Total Applicants: 8</mat-card>
-    <mat-card>Departments: 3</mat-card>
-    <mat-card>Active Roles: 5</mat-card>
+<div class="dashboard-container">
+  <div class="summary-cards">
+    <mat-card class="summary-card blue">
+      <h2>{{ totalEmployees }}</h2>
+      <p>Total Employees</p>
+    </mat-card>
+
+    <mat-card class="summary-card green">
+      <h2>{{ totalApplicants }}</h2>
+      <p>Total Applicants</p>
+    </mat-card>
+
+    <mat-card class="summary-card orange">
+      <h2>{{ departmentCount }}</h2>
+      <p>Departments</p>
+    </mat-card>
+
+    <mat-card class="summary-card purple">
+      <h2>{{ activeJobRoles }}</h2>
+      <p>Active Job Roles</p>
+    </mat-card>
   </div>
+
+  <div class="charts">
+    <mat-card class="chart-card">
+      <h3>Employees by Department</h3>
+      <div class="chart-wrapper">
+        <canvas id="deptChart"></canvas>
+      </div>
+    </mat-card>
+
+    <mat-card class="chart-card">
+      <h3>Applicants by Role</h3>
+      <div class="chart-wrapper">
+        <canvas id="applicantChart"></canvas>
+      </div>
+    </mat-card>
+  </div>
+</div>

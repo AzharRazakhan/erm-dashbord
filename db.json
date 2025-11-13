@@ -3,14 +3,20 @@
     { "id": 1, "username": "owner", "password": "owner123", "role": "SUPER_ADMIN" },
     { "id": 2, "username": "hr", "password": "hr123", "role": "HR_USER" }
   ],
-  "employees": [
-    { "id": 1, "name": "Priya Sharma", "role": "Frontend Developer", "department": "Engineering", "joiningDate": "2023-09-01", "status": "Active" }
+   "employees": [
+    { "id": 1, "name": "Azhar", "role": "Frontend Developer", "department": "IT" },
+    { "id": 2, "name": "Aman", "role": "Backend Developer", "department": "IT" },
+    { "id": 3, "name": "Sara", "role": "HR Executive", "department": "HR" },
+    { "id": 4, "name": "Imran", "role": "Tester", "department": "QA" }
   ],
-  "applications": [
-    { "id": 1, "name": "Amit Kumar", "appliedRole": "Backend Developer", "experience": 3, "status": "New", "resumeUrl": "/resumes/amit-kumar.pdf" }
+  "applicants": [
+    { "id": 1, "name": "Ravi", "appliedRole": "Tester" },
+    { "id": 2, "name": "Priya", "appliedRole": "Frontend Developer" }
   ],
   "departments": [
-    { "id": 1, "name": "Engineering" }, { "id": 2, "name": "HR" }
+    { "id": 1, "name": "IT" },
+    { "id": 2, "name": "HR" },
+    { "id": 3, "name": "QA" }
   ],
   "documents": [
     { "id":1, "employeeId":1, "fileName":"resume-priya.pdf", "category":"Resume", "uploadedAt":"2024-11-01", "url":"/docs/resume-priya.pdf" }
