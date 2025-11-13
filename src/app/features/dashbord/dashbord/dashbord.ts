@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import {  MatCardModule } from "@angular/material/card";
 import { MatGridListModule } from '@angular/material/grid-list';
+import { Router } from '@angular/router';
 import Chart, { Chart as ChartJS } from 'chart.js/auto';
 
 @Component({
@@ -16,7 +17,7 @@ export class Dashbord implements OnInit,AfterViewInit {
   departmentCount = 0;
   activeJobRoles = 0;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private router:Router) {}
   ngAfterViewInit(): void {
     throw new Error('Method not implemented.');
   }
@@ -90,5 +91,9 @@ export class Dashbord implements OnInit,AfterViewInit {
         maintainAspectRatio: false,
       },
     });
+  }
+
+  goToEmplyee() {
+    this.router.navigate(['/employee'])
   }
 }
