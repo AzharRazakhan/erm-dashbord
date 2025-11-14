@@ -4,12 +4,15 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/materia
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { Component, Inject, OnInit } from '@angular/core';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-add-edit-employee',
-  imports: [CommonModule, ReactiveFormsModule, MatDialogModule, MatButtonModule, MatInputModule],
+  imports: [CommonModule, ReactiveFormsModule, MatDialogModule, MatButtonModule,  MatDatepickerModule, MatInputModule, MatNativeDateModule],
   templateUrl: './add-edit-employee.html',
   styleUrl: './add-edit-employee.scss',
+  providers: [MatDatepickerModule, MatNativeDateModule]
 })
 export class AddEditEmployee implements OnInit {
 
@@ -34,7 +37,9 @@ export class AddEditEmployee implements OnInit {
     });
 
     if (this.data) {
+        this.data.joiningDate = new Date(this.data.joiningDate);
       this.empForm.patchValue(this.data);
+      
     }
   }
 

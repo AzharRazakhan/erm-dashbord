@@ -14,26 +14,134 @@
     }
   ],
   "employees": [
-    { "id": 1, "name": "Azhar Khan", "role": "Frontend Developer", "department": "IT", "joiningDate": "2023-09-01", "status": "Active" },
-    { "id": 2, "name": "Aman Verma", "role": "Backend Developer", "department": "IT", "joiningDate": "2022-11-12", "status": "Active" },
-    { "id": 3, "name": "Sara Ali", "role": "HR Executive", "department": "HR", "joiningDate": "2021-08-15", "status": "Active" },
-    { "id": 4, "name": "Imran Shaikh", "role": "Tester", "department": "QA", "joiningDate": "2023-02-10", "status": "Inactive" },
-    { "id": 5, "name": "Neha Sharma", "role": "UI/UX Designer", "department": "Design", "joiningDate": "2023-04-25", "status": "Active" },
-    { "id": 6, "name": "Ravi Patel", "role": "DevOps Engineer", "department": "IT", "joiningDate": "2021-12-20", "status": "Active" },
-    { "id": 7, "name": "Priya Singh", "role": "Recruiter", "department": "HR", "joiningDate": "2022-10-05", "status": "Active" },
-    { "id": 8, "name": "Karan Gupta", "role": "QA Engineer", "department": "QA", "joiningDate": "2023-01-14", "status": "Active" },
-    { "id": 9, "name": "Ananya Das", "role": "Marketing Executive", "department": "Marketing", "joiningDate": "2023-06-09", "status": "Active" },
-    { "id": 10, "name": "Rahul Mehta", "role": "Project Manager", "department": "Management", "joiningDate": "2020-07-01", "status": "Active" },
-    { "id": 11, "name": "Deepak Yadav", "role": "Full Stack Developer", "department": "IT", "joiningDate": "2023-05-18", "status": "Active" },
-    { "id": 12, "name": "Sneha Reddy", "role": "Finance Analyst", "department": "Finance", "joiningDate": "2021-09-22", "status": "Active" },
-    { "id": 13, "name": "Arjun Kumar", "role": "Database Administrator", "department": "IT", "joiningDate": "2022-03-30", "status": "Active" },
-    { "id": 14, "name": "Pooja Sharma", "role": "Content Writer", "department": "Marketing", "joiningDate": "2023-07-11", "status": "Active" },
-    { "id": 15, "name": "Ritika Bansal", "role": "HR Manager", "department": "HR", "joiningDate": "2019-02-19", "status": "Active" },
-    { "id": 16, "name": "Aditya Jain", "role": "System Administrator", "department": "IT", "joiningDate": "2020-10-05", "status": "Active" },
-    { "id": 17, "name": "Zoya Ansari", "role": "Graphic Designer", "department": "Design", "joiningDate": "2023-03-28", "status": "Active" },
-    { "id": 18, "name": "Manoj Tiwari", "role": "Data Analyst", "department": "Finance", "joiningDate": "2022-07-12", "status": "Active" },
-    { "id": 19, "name": "Ankit Raj", "role": "Automation Tester", "department": "QA", "joiningDate": "2023-08-10", "status": "Inactive" },
-    { "id": 20, "name": "Komal Bhatt", "role": "Business Analyst", "department": "Management", "joiningDate": "2021-11-02", "status": "Active" }
+    {
+      "name": "Neha Sharma",
+      "role": "UI/UX Designer",
+      "department": "Design",
+      "joiningDate": "2023-04-26T18:30:00.000Z",
+      "status": "Active",
+      "id": "5"
+    },
+    {
+      "id": "6",
+      "name": "Ravi Patel",
+      "role": "DevOps Engineer",
+      "department": "IT",
+      "joiningDate": "2021-12-20",
+      "status": "Active"
+    },
+    {
+      "id": "7",
+      "name": "Priya Singh",
+      "role": "Recruiter",
+      "department": "HR",
+      "joiningDate": "2022-10-05",
+      "status": "Active"
+    },
+    {
+      "id": "8",
+      "name": "Karan Gupta",
+      "role": "QA Engineer",
+      "department": "QA",
+      "joiningDate": "2023-01-14",
+      "status": "Active"
+    },
+    {
+      "id": "9",
+      "name": "Ananya Das",
+      "role": "Marketing Executive",
+      "department": "Marketing",
+      "joiningDate": "2023-06-09",
+      "status": "Active"
+    },
+    {
+      "id": "10",
+      "name": "Rahul Mehta",
+      "role": "Project Manager",
+      "department": "Management",
+      "joiningDate": "2020-07-01",
+      "status": "Active"
+    },
+    {
+      "id": "11",
+      "name": "Deepak Yadav",
+      "role": "Full Stack Developer",
+      "department": "IT",
+      "joiningDate": "2023-05-18",
+      "status": "Active"
+    },
+    {
+      "id": "12",
+      "name": "Sneha Reddy",
+      "role": "Finance Analyst",
+      "department": "Finance",
+      "joiningDate": "2021-09-22",
+      "status": "Active"
+    },
+    {
+      "id": "13",
+      "name": "Arjun Kumar",
+      "role": "Database Administrator",
+      "department": "IT",
+      "joiningDate": "2022-03-30",
+      "status": "Active"
+    },
+    {
+      "id": "14",
+      "name": "Pooja Sharma",
+      "role": "Content Writer",
+      "department": "Marketing",
+      "joiningDate": "2023-07-11",
+      "status": "Active"
+    },
+    {
+      "id": "15",
+      "name": "Ritika Bansal",
+      "role": "HR Manager",
+      "department": "HR",
+      "joiningDate": "2019-02-19",
+      "status": "Active"
+    },
+    {
+      "id": "16",
+      "name": "Aditya Jain",
+      "role": "System Administrator",
+      "department": "IT",
+      "joiningDate": "2020-10-05",
+      "status": "Active"
+    },
+    {
+      "id": "17",
+      "name": "Zoya Ansari",
+      "role": "Graphic Designer",
+      "department": "Design",
+      "joiningDate": "2023-03-28",
+      "status": "Active"
+    },
+    {
+      "id": "18",
+      "name": "Manoj Tiwari",
+      "role": "Data Analyst",
+      "department": "Finance",
+      "joiningDate": "2022-07-12",
+      "status": "Active"
+    },
+    {
+      "id": "19",
+      "name": "Ankit Raj",
+      "role": "Automation Tester",
+      "department": "QA",
+      "joiningDate": "2023-08-10",
+      "status": "Inactive"
+    },
+    {
+      "id": "20",
+      "name": "Komal Bhatt",
+      "role": "Business Analyst",
+      "department": "Management",
+      "joiningDate": "2021-11-02",
+      "status": "Active"
+    }
   ],
   "applicants": [
     {

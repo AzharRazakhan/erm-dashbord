@@ -11,16 +11,14 @@ import Chart, { Chart as ChartJS } from 'chart.js/auto';
   templateUrl: './dashbord.html',
   styleUrl: './dashbord.scss',
 })
-export class Dashbord implements OnInit,AfterViewInit {
+export class Dashbord implements OnInit {
    totalEmployees = 0;
   totalApplicants = 0;
   departmentCount = 0;
   activeJobRoles = 0;
 
   constructor(private http: HttpClient,private router:Router) {}
-  ngAfterViewInit(): void {
-    throw new Error('Method not implemented.');
-  }
+
 
   ngOnInit(): void {
     this.loadData();

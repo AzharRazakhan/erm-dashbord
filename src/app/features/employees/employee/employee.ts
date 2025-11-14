@@ -7,11 +7,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { AddEditEmployee } from '../add-edit-employee/add-edit-employee';
 import { EmployeeService } from '../employee';
+import { MatCardModule } from "@angular/material/card";
+import { Router } from '@angular/router';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-employees',
   standalone: true,
-  imports: [CommonModule, MatTableModule, MatButtonModule, MatDialogModule, MatIconModule, FormsModule],
+  imports: [CommonModule, MatTableModule, MatButtonModule, MatDialogModule, MatIconModule,MatNativeDateModule, FormsModule, MatCardModule, MatFormFieldModule],
   templateUrl: './employee.html',
 })
 export class EmployeeComponent implements OnInit {
@@ -19,7 +23,7 @@ export class EmployeeComponent implements OnInit {
   employees: any[] = [];
   search = '';
 
-  constructor(private dialog: MatDialog, private empService: EmployeeService) {}
+  constructor(private dialog: MatDialog, private empService: EmployeeService,private router:Router) {}
 
   ngOnInit() {
     this.loadEmployees();
@@ -66,4 +70,8 @@ export class EmployeeComponent implements OnInit {
       );
     }
   }
+
+  goToDashboard() {
+  this.router.navigate(['/dashbord']);
+}
 }
