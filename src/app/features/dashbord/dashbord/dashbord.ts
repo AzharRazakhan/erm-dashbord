@@ -1,30 +1,42 @@
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import {  MatCardModule } from "@angular/material/card";
+import { MatCardModule } from "@angular/material/card";
 import { MatGridListModule } from '@angular/material/grid-list';
 import { Router } from '@angular/router';
 import Chart, { Chart as ChartJS } from 'chart.js/auto';
+import { environment } from '../../../../environments/environment.development';
 
 @Component({
   selector: 'app-dashbord',
-  imports: [MatCardModule,MatGridListModule],
+  imports: [MatCardModule, MatGridListModule],
   templateUrl: './dashbord.html',
   styleUrl: './dashbord.scss',
 })
 export class Dashbord implements OnInit {
-   totalEmployees = 0;
+  totalEmployees = 0;
   totalApplicants = 0;
   departmentCount = 0;
   activeJobRoles = 0;
 
-  constructor(private http: HttpClient,private router:Router) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
 
   ngOnInit(): void {
-    this.loadData();
+    this.loadData()
   }
 
+
   loadData() {
+    this.http.get(`${environment.apiUrl}/api/dashboard/summary`).subscribe((res: any) => {
+      this.totalEmployees = res.totalEmployees;
+      this.activeJobRoles = res.activeJobRoles;
+      this.totalApplicants = res.totalApplicants;
+      this.departmentCount = res.departmentCount;
+    })
+  }
+
+
+  /*loadData() {
     this.http.get<any>('http://localhost:3000/employees').subscribe((res) => {
       this.totalEmployees = res.length;
       this.activeJobRoles = new Set(res.map((e: any) => e.role)).size;
@@ -40,7 +52,8 @@ export class Dashbord implements OnInit {
       this.departmentCount = res.length;
     });
   }
-
+  */
+  /*
   createDepartmentChart(employees: any[]) {
     const departmentCount: any = {};
     employees.forEach((e) => {
@@ -65,7 +78,7 @@ export class Dashbord implements OnInit {
       },
     });
   }
-
+  /*
   createApplicantsChart(applicants: any[]) {
     const roleCount: any = {};
     applicants.forEach((a) => {
@@ -90,6 +103,7 @@ export class Dashbord implements OnInit {
       },
     });
   }
+  */
 
   goToEmplyee() {
     this.router.navigate(['/employee'])

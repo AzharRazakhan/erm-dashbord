@@ -29,9 +29,11 @@ export class Login implements OnInit{
   onSubmit() {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;  
-      this.auth.login(username, password).subscribe(user => {
-        if (Array.isArray(user) && user.length === 0) alert('Invalid credentials')
-        else this.router.navigate(['/dashbord'])
+      this.auth.login(username, password).subscribe((user:any) => {
+        if (user?.statusCode === 200) {
+            this.router.navigate(['/dashbord'])
+        }
+        else alert('Invalid credentials')
       })
     }
   }

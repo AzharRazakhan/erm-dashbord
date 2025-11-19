@@ -141,6 +141,14 @@
       "department": "Management",
       "joiningDate": "2021-11-02",
       "status": "Active"
+    },
+    {
+      "id": "855e",
+      "name": "new Employee",
+      "role": "QA",
+      "department": "IT",
+      "joiningDate": "2025-11-13T18:30:00.000Z",
+      "status": "Active"
     }
   ],
   "applicants": [

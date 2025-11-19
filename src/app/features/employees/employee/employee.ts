@@ -1,77 +1,98 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatTableModule } from '@angular/material/table';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 import { AddEditEmployee } from '../add-edit-employee/add-edit-employee';
 import { EmployeeService } from '../employee';
-import { MatCardModule } from "@angular/material/card";
-import { Router } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatOptionModule } from '@angular/material/core';
+import { Employee } from '../employee.model';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { Auth } from '../../../core/auth';
 
 @Component({
   selector: 'app-employees',
   standalone: true,
-  imports: [CommonModule, MatTableModule, MatButtonModule, MatDialogModule, MatIconModule,MatNativeDateModule, FormsModule, MatCardModule, MatFormFieldModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTableModule
+  ],
   templateUrl: './employee.html',
 })
 export class EmployeeComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'role', 'department', 'joiningDate', 'status', 'actions'];
-  employees: any[] = [];
-  search = '';
 
-  constructor(private dialog: MatDialog, private empService: EmployeeService,private router:Router) {}
+  displayedColumns = ['name', 'email', 'role', 'department', 'joiningDate', 'status', 'actions'];
+  dataSource = new MatTableDataSource<Employee>([]);
+
+  filterForm = new FormGroup({
+    search: new FormControl(''),
+    department: new FormControl('')
+  });
+
+  constructor(
+    private empService: EmployeeService,
+    private dialog: MatDialog,
+    private auth: Auth
+  ) { }
 
   ngOnInit() {
+    this.filterForm.valueChanges.subscribe(() => this.applyFilters());
     this.loadEmployees();
+    const userRole = this.auth.getUserRole();
   }
 
   loadEmployees() {
-    this.empService.getEmployees().subscribe((res) => {
-      this.employees = res;
+    const filters = {
+      search: this.filterForm.value.search || '',
+      department: this.filterForm.value.department || '',
+    };
+
+    this.empService.getEmployees(filters).subscribe((res: any) => {
+      this.dataSource.data = res.data;
     });
+  }
+
+  resetFilters() {
+    this.filterForm.reset({
+      search: '',
+      department: ''
+    });
+  }
+
+  applyFilters() {
+    this.loadEmployees();
   }
 
   openAdd() {
-    const dialogRef = this.dialog.open(AddEditEmployee, { width: '400px' });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.empService.addEmployee(result).subscribe(() => this.loadEmployees());
-      }
+    const ref = this.dialog.open(AddEditEmployee, {
+      width: '500px',
+      data: null
     });
+    ref.afterClosed().subscribe(() => this.loadEmployees());
   }
 
-  openEdit(employee: any) {
-    const dialogRef = this.dialog.open(AddEditEmployee, { width: '400px', data: employee });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.empService.updateEmployee(employee.id, result).subscribe(() => this.loadEmployees());
-      }
+  openEdit(emp: Employee) {
+    const ref = this.dialog.open(AddEditEmployee, {
+      width: '500px',
+      data: emp
     });
+    ref.afterClosed().subscribe(() => this.loadEmployees());
   }
 
-  deleteEmployee(id: number) {
-    if (confirm('Are you sure you want to delete this employee?')) {
+  deleteEmployee(id: string) {
+    if (confirm("Delete this employee?")) {
       this.empService.deleteEmployee(id).subscribe(() => this.loadEmployees());
     }
   }
-
-  searchEmployees() {
-    if (this.search.trim() === '') {
-      this.loadEmployees();
-    } else {
-      this.employees = this.employees.filter((e) =>
-        e.name.toLowerCase().includes(this.search.toLowerCase())
-      );
-    }
-  }
-
-  goToDashboard() {
-  this.router.navigate(['/dashbord']);
-}
 }

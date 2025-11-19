@@ -1,38 +1,77 @@
-<h2 mat-dialog-title>{{ data ? 'Edit Employee' : 'Add Employee' }}</h2>
+<div>
 
-    <form [formGroup]="empForm" (ngSubmit)="onSubmit()" class="form-container">
-      <mat-form-field appearance="outline">
-        <mat-label>Name</mat-label>
-        <input matInput formControlName="name" />
-      </mat-form-field>
+  <h2 mat-dialog-title>{{ data ? "Edit Employee" : "Add Employee" }}</h2>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Role</mat-label>
-        <input matInput formControlName="role" />
-      </mat-form-field>
+  <form [formGroup]="empForm" (ngSubmit)="submit()">
 
-      <mat-form-field appearance="outline">
-        <mat-label>Department</mat-label>
-        <input matInput formControlName="department" />
-      </mat-form-field>
+    <mat-dialog-content>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+      </p>
+      <p>
 
-      <mat-form-field appearance="outline">
-  <mat-label>Joining Date</mat-label>
-  <input matInput [matDatepicker]="picker" formControlName="joiningDate">
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email">
+        </mat-form-field>
+      </p>
+      <p>
 
+        <mat-form-field appearance="outline">
+          <mat-label>Role</mat-label>
+          <input matInput formControlName="role">
+        </mat-form-field>
+      </p>
+      <p>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Status</mat-label>
-        <input matInput formControlName="status" />
-      </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Department</mat-label>
+          <mat-select formControlName="department">
+            <mat-option value="IT">IT</mat-option>
+            <mat-option value="HR">HR</mat-option>
+            <mat-option value="Sales">Sales</mat-option>
+            <mat-option value="Finance">Finance</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <p>
 
-      <div class="actions">
-        <button mat-raised-button color="primary" type="submit">
-          {{ data ? 'Update' : 'Add' }}
-        </button>
-        <button mat-button mat-dialog-close type="button">Cancel</button>
+        <mat-form-field appearance="outline">
+          <mat-label>Joining Date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="joiningDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </p>
+      <p>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Status</mat-label>
+          <mat-select formControlName="status">
+            <mat-option value="active">Active</mat-option>
+            <mat-option value="inactive">Inactive</mat-option>
+            <mat-option value="on-leave">On Leave</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <p>
+
+      <div>
+        <label>Select Document:</label>
+        <input type="file" (change)="onFileSelect($event)">
       </div>
-    </form>
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-flat-button color="primary" type="submit">
+        {{ data ? "Update" : "Add" }}
+      </button>
+    </mat-dialog-actions>
+
+  </form>
+</div>
