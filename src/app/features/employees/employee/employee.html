@@ -22,6 +22,9 @@
     <button mat-flat-button color="primary" (click)="openAdd()">
       Add Employee
     </button>
+    <button mat-flat-button color="primary" (click)="goToDashboard()">
+      go To Dashboard
+    </button>
   </div>
 
   <mat-table [dataSource]="dataSource">
@@ -62,9 +65,11 @@
         <button mat-icon-button color="primary" (click)="openEdit(e)">
           <mat-icon>edit</mat-icon>
         </button>
+        @if (userRole === 'SuperAdmin') {
         <button mat-icon-button color="warn" (click)="deleteEmployee(e._id!)">
           <mat-icon>delete</mat-icon>
         </button>
+        }
       </mat-cell>
     </ng-container>
 

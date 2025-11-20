@@ -26,3 +26,22 @@
         display: flex;
         justify-content: flex-end;
       }
+
+      .login__register {
+  font-size: var(--small-font-size);
+  text-align: center;
+  margin: 10px
+}
+
+.login__register a {
+  color: var(--white-color);
+  font-weight: 500;
+}
+
+.login__register a:hover {
+  text-decoration: underline;
+}
+
+.goToSignUp{
+  cursor: pointer;
+}

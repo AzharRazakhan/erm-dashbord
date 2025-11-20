@@ -13,29 +13,33 @@ import { Auth } from '../../core/auth';
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
-export class Login implements OnInit{
+export class Login implements OnInit {
   loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router,private auth: Auth) {}
-  
-   ngOnInit(): void {
+  constructor(private fb: FormBuilder, private router: Router, private auth: Auth) { }
+
+  ngOnInit(): void {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
 
-  
+
   onSubmit() {
     if (this.loginForm.valid) {
-      const { username, password } = this.loginForm.value;  
-      this.auth.login(username, password).subscribe((user:any) => {
+      const { username, password } = this.loginForm.value;
+      this.auth.login(username, password).subscribe((user: any) => {
         if (user?.statusCode === 200) {
-            this.router.navigate(['/dashbord'])
+          this.router.navigate(['/dashbord'])
         }
         else alert('Invalid credentials')
       })
     }
+  }
+
+  goToSignUp() {
+    this.router.navigate(['/signup'])
   }
 
 }

@@ -5,6 +5,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { Router } from '@angular/router';
 import Chart, { Chart as ChartJS } from 'chart.js/auto';
 import { environment } from '../../../../environments/environment.development';
+import { EmployeeService } from '../../employees/employee';
 
 @Component({
   selector: 'app-dashbord',
@@ -18,11 +19,16 @@ export class Dashbord implements OnInit {
   departmentCount = 0;
   activeJobRoles = 0;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private employeeService: EmployeeService) { }
 
 
   ngOnInit(): void {
     this.loadData()
+
+    this.employeeService.getEmployees().subscribe((res: any) => {
+      console.log(res, 'res--')
+      this.createDepartmentChart(res.data)
+    })
   }
 
 
@@ -104,6 +110,31 @@ export class Dashbord implements OnInit {
     });
   }
   */
+
+  createDepartmentChart(employees: any[]) {
+    const departmentCount: any = {};
+    employees.forEach((e) => {
+      departmentCount[e.department] = (departmentCount[e.department] || 0) + 1;
+    });
+
+    new Chart('deptChart', {
+      type: 'bar',
+      data: {
+        labels: Object.keys(departmentCount),
+        datasets: [
+          {
+            label: 'Employees by Department',
+            data: Object.values(departmentCount),
+            backgroundColor: ['#2196F3', '#4CAF50', '#FF9800', '#9C27B0'],
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+      },
+    });
+  }
 
   goToEmplyee() {
     this.router.navigate(['/employee'])

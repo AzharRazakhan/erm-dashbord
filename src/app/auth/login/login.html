@@ -1,5 +1,4 @@
-<div
-  class="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100 p-4">
+<div style=" padding: 50px; margin: 30px;">
   <mat-card>
     <h1 class="text-2xl font-bold text-center mb-2 text-indigo-700 tracking-wide">
       Employee Management System
@@ -32,15 +31,17 @@
               [disabled]="loginForm.invalid">
               Login
             </button>
+            <div class="login__register">
+              Don't have an account? <b class="goToSignUp" (click)="goToSignUp()">Register</b>
+            </div>
           </div>
+
+
 
         </form>
 
       </mat-card-content>
     </mat-card>
-    <p class="text-center text-sm text-gray-500 mt-4">
-      © 2025 Employee Management System
-    </p>
   </mat-card>
 
 

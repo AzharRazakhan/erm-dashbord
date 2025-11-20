@@ -9,13 +9,11 @@ export class EmployeeService {
   private apiUrl = environment.apiUrl + '/api/employees';
 
   constructor(private http: HttpClient) { }
-
   getEmployees(filters?: any): Observable<Employee[]> {
     let params = new HttpParams();
 
     if (filters) {
       Object.keys(filters).forEach(key => {
-        // Only add if value is not null or undefined
         if (filters[key] !== null && filters[key] !== undefined && filters[key] !== '') {
           params = params.set(key, filters[key]);
         }

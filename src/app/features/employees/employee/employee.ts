@@ -13,6 +13,7 @@ import { Employee } from '../employee.model';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { Auth } from '../../../core/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employees',
@@ -34,6 +35,7 @@ export class EmployeeComponent implements OnInit {
 
   displayedColumns = ['name', 'email', 'role', 'department', 'joiningDate', 'status', 'actions'];
   dataSource = new MatTableDataSource<Employee>([]);
+  userRole: any = '';
 
   filterForm = new FormGroup({
     search: new FormControl(''),
@@ -43,13 +45,15 @@ export class EmployeeComponent implements OnInit {
   constructor(
     private empService: EmployeeService,
     private dialog: MatDialog,
-    private auth: Auth
+    private auth: Auth,
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.filterForm.valueChanges.subscribe(() => this.applyFilters());
     this.loadEmployees();
-    const userRole = this.auth.getUserRole();
+    this.userRole = this.auth.getUserRole();
+
   }
 
   loadEmployees() {
@@ -94,5 +98,9 @@ export class EmployeeComponent implements OnInit {
     if (confirm("Delete this employee?")) {
       this.empService.deleteEmployee(id).subscribe(() => this.loadEmployees());
     }
+  }
+
+  goToDashboard() {
+    this.router.navigate(['/dashbord'])
   }
 }
